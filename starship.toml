@@ -1,4 +1,5 @@
 format = """
+$os\
 $conda\
 $username\
 $hostname\
@@ -22,62 +23,61 @@ $character"""
 add_newline=false
 command_timeout = 10000
 
-# ~/.config/starship.toml
+[os]
+disabled = false
 
-[username]
-format='[$user]($style)'
-show_always=true
-disabled = true
+[os.symbols]
+Debian = "  "
 
 [directory]
 style = "blue"
 home_symbol = ""
 
 [directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Documents" = "󰈙  "
+"Downloads" = "  "
+"Music" = "  "
+"Pictures" = "  " 
 
 [c]
-symbol = " "
+symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 style = "italic bright-blue"
 
 [docker_context]
-symbol = " "
+symbol = "  "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style)'
 
 [golang]
-symbol = " "
+symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 style = "italic bright-blue"
 
 [haskell]
-symbol = " "
+symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
-symbol = " "
+symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
-symbol = "󰆥 "
+symbol = "󰆥  "
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = " "
+symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 
 [python]
 format = "[ ${symbol} ${version}]($style)"
-symbol = " "
+symbol = "  "
 version_format = "${major}.${minor}"
 style = "italic bright-yellow"
 
 [zig]
-symbol = " "
+symbol = "  "
 
 [character]
 success_symbol = "[❯](purple)"
@@ -85,7 +85,7 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [git_branch]
-symbol = ""
+symbol = " "
 format = "[$branch]($style)"
 style = "bright-black"
 
@@ -98,7 +98,7 @@ modified = "​"
 staged = "​"
 renamed = "​"
 deleted = "​"
-stashed = "≡"
+stashed = "≡ "
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
@@ -109,14 +109,14 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [ocaml]
-symbol = " "
+symbol = "  "
 
 [conda]
 style = "bold green"
-symbol = " "
+symbol = "  "
 format = '[$symbol$environment]($style) '
 ignore_base = false
 
 
 [hostname]
-ssh_symbol = " "
+ssh_symbol = "  "
