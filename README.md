@@ -1,1 +1,1 @@
-Dotfiles for my Linux workstation. 
+# Dotfiles for my Linux workstation
