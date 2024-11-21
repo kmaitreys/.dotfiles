@@ -71,7 +71,7 @@ symbol = "  "
 format = '[ $symbol ($version) ]($style)'
 
 [python]
-format = "[ ${symbol} ${version}]($style)"
+format = "[ ${virtualenv} ${symbol} ${version}]($style)"
 symbol = "  "
 version_format = "${major}.${minor}"
 style = "italic bright-yellow"
