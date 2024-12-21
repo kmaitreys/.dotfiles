@@ -1,5 +1,6 @@
 format = """
 $os\
+(bg:#333333 fg: bold green)\
 $conda\
 $username\
 $hostname\
@@ -7,6 +8,7 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+[](fg:#394260 bg:#212736)\
 $c\
 $golang\
 $haskell\
@@ -16,89 +18,134 @@ $rust\
 $python\
 $zig\
 $ocaml\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
 $docker_context\
 $line_break\
 $character"""
 
 add_newline=false
 command_timeout = 10000
+# ~/.config/starship.toml
 
+# A continuation prompt that displays two filled-in arrows
+continuation_prompt = '▶▶ '
 [os]
 disabled = false
 
+#[time]
+#disabled = false
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
 [os.symbols]
 Debian = "  "
+Macos = " "
 
 [directory]
-style = "blue"
-home_symbol = ""
+style = "fg:#e3e5e5 bg:#394260"
+home_symbol = "󰲋"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncate_to_repo = true
+truncation_symbol = "… /"
 
 [directory.substitutions]
-"Documents" = "󰈙  "
-"Downloads" = "  "
-"Music" = "  "
-"Pictures" = "  " 
+"Documents" = "󰈙"
+"Downloads" = ""
+"Music" = ""
+"Pictures" = "" 
 
 [c]
-symbol = "  "
-format = '[ $symbol ($version) ]($style)'
-style = "italic bright-blue"
+symbol = " "
+#format = '[ $symbol ($version) ]($style)'
+#style = "italic bright-blue"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [docker_context]
-symbol = "  "
+symbol = " "
 style = "bg:#06969A"
 format = '[ $symbol $context ]($style)'
 
 [golang]
-symbol = "  "
-format = '[ $symbol ($version) ]($style)'
-style = "italic bright-blue"
+symbol = ""
+#format = '[ $symbol ($version) ]($style)'
+#style = "italic bright-blue"
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [haskell]
-symbol = "  "
-format = '[ $symbol ($version) ]($style)'
+symbol = ""
+#format = '[ $symbol ($version) ]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [julia]
-symbol = "  "
-format = '[ $symbol ($version) ]($style)'
+symbol = ""
+#format = '[ $symbol ($version) ]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [nim]
-symbol = "󰆥  "
-format = '[ $symbol ($version) ]($style)'
+symbol = "󰆥"
+#format = '[ $symbol ($version) ]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [rust]
-symbol = "  "
-format = '[ $symbol ($version) ]($style)'
+symbol = ""
+#format = '[ $symbol ($version) ]($style)'
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [python]
-format = "[ ${virtualenv} ${symbol} ${version}]($style)"
-symbol = "  "
+#format = "[ ${virtualenv} ${symbol} ${version}]($style)"
+symbol = " "
 version_format = "${major}.${minor}"
-style = "italic bright-yellow"
+#style = "italic bright-yellow"
+style = "bg:#212736"
+format = '[[ ($virtualenv) $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [zig]
-symbol = "  "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
+#[git_branch]
+#symbol = ""
+#format = "[$branch]($style)"
+#style = "bright-black"
+
 [git_branch]
-symbol = " "
-format = "[$branch]($style)"
-style = "bright-black"
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡ "
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+#[git_status]
+#format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+#style = "cyan"
+#conflicted = "​"
+#untracked = "​"
+#modified = "​"
+#staged = "​"
+#renamed = "​"
+#deleted = "​"
+#stashed = "≡"
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
@@ -109,14 +156,16 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [ocaml]
-symbol = "  "
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [conda]
-style = "bold green"
-symbol = "  "
-format = '[$symbol$environment]($style) '
+style = "bg:#333333 fg:bold green"
+symbol = " "
+format = '[ $symbol$environment ]($style)'
 ignore_base = false
 
 
 [hostname]
-ssh_symbol = "  "
+ssh_symbol = ""
